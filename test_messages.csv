@@ -1,0 +1,11 @@
+Test_Number,Message,Expected_Category,Expected_Confidence
+1,"Your app keeps crashing when I upload photos",Bug Report,5
+2,"Can you add a dark mode?",Feature Request,5
+3,"I was charged $50 twice last month",Billing Issue,5
+4,"I forgot my password and can't log in",Account Help,5
+5,"Your support team is fantastic! Helped me instantly.",Compliment,5
+6,"Sometimes the upload feature doesn't work, and I'd really like a retry button",Bug Report,4
+7,"Hi",Other,1
+8,"Do you offer annual billing plans?",Billing Issue,4
+9,"Export to CSV isn't working on my reports page",Bug Report,5
+10,"Will you ever support Salesforce integration?",Feature Request,4
