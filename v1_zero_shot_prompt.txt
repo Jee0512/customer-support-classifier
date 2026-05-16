@@ -1,0 +1,54 @@
+VERSION 1: ZERO-SHOT PROMPTING
+================================
+
+ABOUT THIS VERSION:
+This version uses NO examples. Just gives instruction and model figures it out.
+
+PROS: Fast, simple
+CONS: Inconsistent format, no confidence, no reasoning
+
+THE PROMPT:
+-----------
+
+You are a customer support classification assistant.
+
+Classify the following customer message into ONLY one category:
+
+Categories:
+- Bug Report
+- Feature Request
+- Billing Issue
+- Account Help
+- Compliment
+- Other
+
+Customer Message: [TEST MESSAGE HERE]
+
+Answer with only the category name.
+
+
+TEST RESULTS:
+-------------
+
+Test 1: "Your app keeps crashing when I upload photos" → Bug Report 
+Test 2: "Can you add a dark mode?" → Feature Request 
+Test 3: "I was charged $50 twice last month" → Billing Issue 
+Test 4: "I forgot my password and can't log in" → Account Help 
+Test 5: "Your support team is fantastic! Helped me instantly." → Compliment 
+Test 6: "Sometimes the upload feature doesn't work, and I'd really like a retry button" → Bug Report 
+Test 7: "Hi" → Other 
+Test 8: "Do you offer annual billing plans?" → Billing Issue 
+Test 9: "Export to CSV isn't working on my reports page" → Bug Report 
+Test 10: "Will you ever support Salesforce integration?" → Feature Request 
+
+ACCURACY: 10/10 (100%) 
+
+WHAT WORKED:
+- All classifications were correct
+- Fast to get results
+
+WHAT DIDN'T WORK:
+- No confidence scores (don't know how sure it is)
+- No reasoning (can't verify WHY)
+- Inconsistent output format (sometimes adds explanation)
+- Doesn't handle ambiguous cases (Test 6 is both bug + feature)
