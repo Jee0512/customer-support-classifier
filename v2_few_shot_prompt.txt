@@ -1,0 +1,78 @@
+VERSION 2: FEW-SHOT PROMPTING
+=============================
+
+ABOUT THIS VERSION:
+This version adds EXAMPLES before the real request. This teaches the model the pattern.
+
+PROS: Consistent format, adds confidence scores, teaches pattern
+CONS: Uses more tokens
+
+THE PROMPT:
+-----------
+
+You are a customer support classification assistant.
+
+Classify customer messages into ONLY one category.
+
+Categories:
+- Bug Report
+- Feature Request
+- Billing Issue
+- Account Help
+- Compliment
+- Other
+
+Examples:
+
+Message: "App keeps crashing"
+Category: Bug Report
+
+Message: "Bye"
+Category: Other
+
+Message: "Can you add 6GB RAM support?"
+Category: Feature Request
+
+Message: "The price was too high"
+Category: Billing Issue
+
+Now classify this message:
+
+Message: [TEST MESSAGE HERE]
+
+Return output in this format:
+Category: <category>
+Confidence Score: <1-5>
+
+
+TEST RESULTS:
+-------------
+
+Test 1: "Your app keeps crashing when I upload photos" → Bug Report (5/5) 
+Test 2: "Can you add a dark mode?" → Feature Request (5/5) 
+Test 3: "I was charged $50 twice last month" → Billing Issue (5/5) 
+Test 4: "I forgot my password and can't log in" → Account Help (5/5) 
+Test 5: "Your support team is fantastic! Helped me instantly." → Compliment (5/5) 
+Test 6: "Sometimes the upload feature doesn't work, and I'd really like a retry button" → I don't know (3/5) ⚠️
+Test 7: "Hi" → Other (5/5) 
+Test 8: "Do you offer annual billing plans?" → Billing Issue (4/5) 
+Test 9: "Export to CSV isn't working on my reports page" → Bug Report (5/5) 
+Test 10: "Will you ever support Salesforce integration?" → Feature Request (5/5) 
+
+ACCURACY: 9/10 (90%)
+
+IMPROVEMENTS OVER V1:
+✓ Confidence scores (1-5) show certainty level
+✓ Consistent output format (always returns "Category: X | Confidence: N")
+✓ Examples teach the model the exact pattern
+✓ Shows uncertainty (Test 6 = 3/5) instead of guessing
+
+STILL COULD IMPROVE:
+- No reasoning provided
+- Ambiguous cases not explained
+- No edge case rules
+
+ANALYSIS:
+Test 6 is interesting: It shows "I don't know (3/5)" instead of confident answer.
+This is actually GOOD because the message is both a bug report AND a feature request!
+V2 recognized the ambiguity.
